@@ -1,6 +1,8 @@
-# Odin template
+# Weather App
 
-## Webpack for web
+## Live
+
+https://CyprianESPI.github.io/odin-weather-app/
 
 ### Install
 
@@ -18,6 +20,4 @@
 
 `npm run deploy`
 
-Website is live at https://username.github.io/reponame/
 
-https://CyprianESPI.github.io/odin-template/
