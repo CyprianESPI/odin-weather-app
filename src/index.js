@@ -48,3 +48,5 @@ getWeatherData("Brussels").then(res => {
     console.log(res);
     updateResult(res);
 });
+
+console.log("Loaded");
