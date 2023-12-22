@@ -12,10 +12,10 @@ async function getWeatherData(location) {
             throw new Error("Network response was not OK");
         }
         const json = await response.json();
-        //console.log("json", json);
+        console.log("json", json);
         //console.log("json str", JSON.stringify(json));
 
-        const current_weather = new Weather(json.current.condition.text, json.current.condition.icon);
+        const current_weather = new Weather(json.current.condition.text, json.current.condition.icon, json.location.name);
         //console.log("current_weather:", current_weather);
         return current_weather;
     } catch (error) {
@@ -31,8 +31,9 @@ const LOCATION = document.getElementById("location");
 function updateResult(weather) {
     //RESULT.style.color = "red";
     MAIN.style.backgroundImage = `url(https:${weather.condition_icon})`;
-    RESULT.innerText =
-        `${weather.condition_text}`;
+    RESULT.innerHTML =
+        `<h2>${weather.location}</h2>
+        <p>${weather.condition_text}</p>`;
 }
 
 LOCATION.addEventListener('input', (e) => {
