@@ -20,4 +20,6 @@ https://CyprianESPI.github.io/odin-weather-app/
 
 `npm run deploy`
 
+#### Fix deploy in case of rebase
 
+git push origin `git subtree split --prefix dist main`:gh-pages --force
