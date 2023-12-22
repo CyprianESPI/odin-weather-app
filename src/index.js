@@ -24,13 +24,13 @@ async function getWeatherData(location) {
 }
 
 // DOM interaction
+const MAIN = document.querySelector("main");
 const RESULT = document.getElementById("result");
 const LOCATION = document.getElementById("location");
 
 function updateResult(weather) {
-    RESULT.style.color = "red";
-    RESULT.style.backgroundImage = "abc.png";//`"url(${res.condition_icon})"`;
-    RESULT.style.backgroundColor = "blue";//`"url(${res.condition_icon})"`;
+    //RESULT.style.color = "red";
+    MAIN.style.backgroundImage = `url(https:${weather.condition_icon})`;
     RESULT.innerText =
         `${weather.condition_text}`;
 }

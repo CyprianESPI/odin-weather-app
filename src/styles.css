@@ -13,3 +13,7 @@ body {
     grid-template-rows: auto 1fr auto;
     text-align: center;
 }
+
+main {
+    background-size: cover
+}
