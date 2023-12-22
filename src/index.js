@@ -12,15 +12,26 @@ async function getWeatherData(location) {
             throw new Error("Network response was not OK");
         }
         const json = await response.json();
-        console.log("json", json);
-        console.log("json str", JSON.stringify(json));
+        //console.log("json", json);
+        //console.log("json str", JSON.stringify(json));
 
         const current_weather = new Weather(json.current.condition.text, json.current.condition.icon);
-        console.log("current_weather:", current_weather);
+        //console.log("current_weather:", current_weather);
         return current_weather;
     } catch (error) {
         console.error("Error", error);
     }
 }
 
-const currWeather = getWeatherData("Brussels");
+getWeatherData("Brussels");
+
+// DOM interaction
+const RESULT = document.getElementById("result");
+const LOCATION = document.getElementById("location");
+LOCATION.addEventListener('input', (e) => {
+    getWeatherData(e.target.value).then(res => {
+        console.log(res);
+        RESULT.innerHTML =
+            `${res.condition_text}`;
+    });
+});
