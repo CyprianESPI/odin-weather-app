@@ -1,6 +1,18 @@
 import Styles from "./styles.css";
 
-console.log("Todo...");
-console.log("Provide a title");
+const API_KEY = "1986480656ec490d950204923202611";
 
-alert("Follow instructions in the console");
+async function getWeatherData(location) {
+    try {
+        const url = `http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${location}`;
+        const response = await fetch(url);
+        console.log("Response", response);
+        if (!response.ok) {
+            throw new Error("Network response was not OK");
+        }
+    } catch (error) {
+        console.error("Error", error);
+    }
+}
+
+getWeatherData("Brussels");
