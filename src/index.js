@@ -1,7 +1,10 @@
 import Weather from "./components/weather";
 import Styles from "./styles.css";
 
-const API_KEY = "1986480656ec490d950204923202611";
+// ================= //
+// API
+// ================= //
+const API_KEY = "9ccc8935ccf14bafb50170713232312";
 
 async function getWeatherData(location) {
     try {
@@ -25,13 +28,15 @@ async function getWeatherData(location) {
     }
 }
 
+// ================= //
 // DOM interaction
+// ================= //
 const MAIN = document.querySelector("main");
 const RESULT = document.getElementById("result");
 const LOCATION = document.getElementById("location");
 
 function updateResult(weather) {
-    //RESULT.style.color = "red";
+    console.log(weather);
     MAIN.style.backgroundImage = `url(https:${weather.condition_icon})`;
     RESULT.innerHTML =
         `<h2>${weather.location}</h2>
@@ -40,15 +45,29 @@ function updateResult(weather) {
 
 LOCATION.addEventListener('input', (e) => {
     getWeatherData(e.target.value).then(res => {
-        console.log(res);
         updateResult(res);
     });
 });
 
+// ================= //
 // Main
-getWeatherData("Brussels").then(res => {
-    console.log(res);
-    updateResult(res);
-});
+// ================= //
+function main() {
+    console.log("Initialazing...");
 
-console.log("Loaded");
+    // Get url param location
+    const params = new URLSearchParams(document.location.search);
+    let location = params.get("location");
+    if (location === null)
+        location = "Brussels";
+
+    // Update the result
+    LOCATION.value = location;
+    // Trigger input event to force update of DOM
+    const event = new Event('input');
+    LOCATION.dispatchEvent(event);
+
+    console.log("Initialazed!");
+}
+
+main();
