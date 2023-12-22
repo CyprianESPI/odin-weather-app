@@ -23,15 +23,27 @@ async function getWeatherData(location) {
     }
 }
 
-getWeatherData("Brussels");
-
 // DOM interaction
 const RESULT = document.getElementById("result");
 const LOCATION = document.getElementById("location");
+
+function updateResult(weather) {
+    RESULT.style.color = "red";
+    RESULT.style.backgroundImage = "abc.png";//`"url(${res.condition_icon})"`;
+    RESULT.style.backgroundColor = "blue";//`"url(${res.condition_icon})"`;
+    RESULT.innerText =
+        `${weather.condition_text}`;
+}
+
 LOCATION.addEventListener('input', (e) => {
     getWeatherData(e.target.value).then(res => {
         console.log(res);
-        RESULT.innerHTML =
-            `${res.condition_text}`;
+        updateResult(res);
     });
+});
+
+// Main
+getWeatherData("Brussels").then(res => {
+    console.log(res);
+    updateResult(res);
 });
