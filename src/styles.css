@@ -14,5 +14,10 @@ body {
 }
 
 main {
-    background-size: cover
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+    background-size: contain;
+    /* Fit the image to container */
 }
