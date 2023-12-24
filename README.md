@@ -4,6 +4,10 @@
 
 ### Install
 
+`npm i`
+
+### Build
+
 `npm run build`
 
 ### Run locally
